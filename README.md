@@ -60,7 +60,7 @@ http://localhost:5173
 
 ℹ️ Le serveur Vite tourne en mode développement dans le container.
 
- ##📌 Améliorations possibles
+ ## 📌 Améliorations possibles
 
 -Mode “terminé”
 
