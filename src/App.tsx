@@ -59,6 +59,31 @@ function App() {
     setTodos(newTodos)
   }
 
+  const [selectedTodos , setSelectedTodos] = useState<Set<number>>(new Set())
+
+
+  function toggleSelectTodos(id : number) {
+    const newSelected = new Set(selectedTodos)
+    if(newSelected.has(id)) {
+      newSelected.delete(id)
+    } else {
+      newSelected.add(id)
+    }
+    setSelectedTodos(newSelected)
+  }
+
+  function finishSelected () {
+    const newTodos = todos.filter((todo) =>{
+      if (selectedTodos.has(todo.id)){
+        return false
+      } else {
+        return true
+      }
+    })
+
+    setTodos(newTodos)
+    setSelectedTodos(new Set())
+  }
     return (
       <div className="flex justify-center">
         <div className="w-2/3 flex flex-col gap-4 my-15 bg-base-300 p-5 rounded-2xl">
@@ -84,7 +109,8 @@ function App() {
             </button>
           </div>
           <div className="space-y-2 flex-1 h-fit">
-            <div className="flex flex-wrap gap-4">
+          <div className="flex items-center justify-between">
+              <div className="flex flex-wrap gap-4">
               <button
                 className={`btn btn-soft ${filter === "Tous" ? "btn-primary" : ""}`}
                 onClick={() => setFilter("Tous")}
@@ -110,6 +136,16 @@ function App() {
                 Basse ({lowCount})
               </button>
             </div>
+              <button
+                onClick = {finishSelected}
+                className="btn btn-primary"
+                disabled={selectedTodos.size == 0}
+              >
+                Finir la sélection ({selectedTodos.size})
+              </button>
+          </div>
+
+
 
             {filteredTodos.length > 0 ? (
               <ul className="divide-y divide-primary/20">
@@ -117,7 +153,9 @@ function App() {
                   <li key={todo.id}>
                     <TodoItem 
                       todo={todo}
+                      isSelected={selectedTodos.has(todo.id)}
                       onDelete={() => deleteTodo(todo.id)}
+                      onToggleSelect={toggleSelectTodos}
                     />
                   </li>
                 ))}
