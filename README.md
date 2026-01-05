@@ -69,3 +69,12 @@ http://localhost:5173
 -Stockage backend
 
 -Docker Compose (front + API)
+
+## 📸 Screenshots
+
+**Vue principale – liste des tâches**
+![Vue principale](./screens/todo-main.png)
+
+**Filtrage par priorité (aucune tâche)**
+![Vue principale – suite](./screens/todo-main2.png)
+
