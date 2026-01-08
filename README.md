@@ -25,7 +25,7 @@ Elle permet d’ajouter, filtrer, sélectionner et supprimer des tâches avec pe
 - **Tailwind CSS**
 - **DaisyUI**
 - **Lucide Icons**
-- **Docker** (environnement de développement)
+- **Docker**
 
 ---
 

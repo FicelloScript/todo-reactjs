@@ -30,6 +30,7 @@ import { Trash } from "lucide-react";
                             <span>
                                 {todo.text}
                             </span>{" "}
+                            {/* Badge color changes depending on the todo priority */}
                             <span
                                 className={`badge badge-sm badge-soft
                                     ${todo.priority === "Urgente"
