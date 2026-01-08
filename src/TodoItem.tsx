@@ -14,7 +14,7 @@ import { Trash } from "lucide-react";
         isSelected : boolean
         onToggleSelect: (id : number) => void
     }
-
+    // Presentational component responsible for displaying a single todo item.
     const TodoItem = ({todo, onDelete, isSelected, onToggleSelect } : Props) => {
         return (
             <li className="p-3">

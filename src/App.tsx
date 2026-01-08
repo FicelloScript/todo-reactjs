@@ -14,11 +14,13 @@ function App() {
   const [input, setInput] = useState<string>("")
   const [priority, setPriority] = useState<Priority>("Moyenne")
 
+  // Load todos from localStorage to persist the list across page refreshes.
   const savedTodos = localStorage.getItem("todos")
   const initialTodos = savedTodos ? JSON.parse(savedTodos) : []
   const [todos , setTodos] = useState<Todo[]>(initialTodos)
   const [filter , setFilter] = useState<Priority | "Tous">("Tous")
 
+  // Keep localStorage in sync whenever the todos state changes.
   useEffect(() => {
     localStorage.setItem("todos" , JSON.stringify(todos))
   } , [todos])
@@ -59,6 +61,7 @@ function App() {
     setTodos(newTodos)
   }
 
+  // Using a Set for O(1) selection checks and toggling.
   const [selectedTodos , setSelectedTodos] = useState<Set<number>>(new Set())
 
 
@@ -73,6 +76,7 @@ function App() {
   }
 
   function finishSelected () {
+    // Removes all selected todos from the list.
     const newTodos = todos.filter((todo) =>{
       if (selectedTodos.has(todo.id)){
         return false
